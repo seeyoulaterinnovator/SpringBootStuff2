@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Создание пользователя</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .label-text {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 15px;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 5px;
+        }
+
+        .submit-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1 class="text-center">Создание пользователя</h1>
+    <form th:action="@{/saveUser}" th:object="${userForm}" method="post" class="text-center">
+        <div>
+            <label for="name" class="label-text">Введите имя:</label>
+            <input type="text" id="name" th:field="*{name}" class="input-field" />
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error-message"></p>
+        </div>
+        <div>
+            <label for="lastName" class="label-text">Введите фамилию:</label>
+            <input type="text" id="lastName" th:field="*{lastName}" class="input-field" />
+            <p th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="error-message"></p>
+        </div>
+        <div>
+            <label for="age" class="label-text">Введите возраст:</label>
+            <input type="text" id="age" th:field="*{age}" class="input-field" />
+            <p th:if="${#fields.hasErrors('age')}" th:errors="*{age}" class="error-message"></p>
+        </div>
+        <div>
+            <label for="mail" class="label-text">Введите почту:</label>
+            <input type="text" id="mail" th:field="*{mail}" class="input-field" />
+            <p th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}" class="error-message"></p>
+        </div>
+        <button type="submit" class="submit-button">Сохранить</button>
+    </form>
+</div>
+</body>
+</html>
