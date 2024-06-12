@@ -5,13 +5,9 @@ import org.apache.catalina.User;
 import java.util.List;
 
 public interface UserDao {
-    void creatUser(User users);
-
-    void updatUser(User users);
-
-    List<User> getAllUsers();
-
-    User getUserId(Long id);
-
-    void delUser(Long id);
+    void addUser(com.kata.demo.model.User user);
+    com.kata.demo.model.User findUserById(Long id);
+    void deleteUserById(Long id);
+    void updateUser(com.kata.demo.model.User user);
+    List<com.kata.demo.model.User> listAllUsers();
 }

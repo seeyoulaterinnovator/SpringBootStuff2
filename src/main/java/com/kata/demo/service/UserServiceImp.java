@@ -1,47 +1,42 @@
 package com.kata.demo.service;
 
-import com.kata.demo.dao.UserDao;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.kata.demo.dao.UserDao;
+import com.kata.demo.model.User;
 
 import java.util.List;
-
 @Service
 public class UserServiceImp implements UserService {
-    private final UserDao userDao;
-
     @Autowired
-    public UserServiceImp(UserDao userDao) {
-        this.userDao = userDao;
-    }
+    private UserDao userDao;
 
+    @Override
     @Transactional
-    @Override
-    public void creatUser(User users) {
-        userDao.creatUser(users);
+    public void addUser(User user) {
+        userDao.addUser(user);
     }
 
+    @Override
+    public User findUserById(Long id) {
+        return userDao.findUserById(id);
+    }
+
+    @Override
     @Transactional
-    @Override
-    public void updatUser(User users) {
-        userDao.updatUser(users);
+    public void deleteUserById(Long id) {
+        userDao.deleteUserById(id);
     }
 
     @Override
-    public List<User> getAllUsers() {
-        return userDao.getAllUsers();
-    }
-
-    @Override
-    public User getUserId(Long id) {
-        return userDao.getUserId(id);
-    }
-
     @Transactional
+    public void updateUserInfo(User user) {
+        userDao.updateUser(user);
+    }
+
     @Override
-    public void delUser(Long id) {
-        userDao.delUser(id);
+    public List<User> listAllUsers() {
+        return userDao.listAllUsers();
     }
 }

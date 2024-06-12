@@ -1,16 +1,14 @@
 package com.kata.demo.service;
-import org.apache.catalina.User;
+
+
+import com.kata.demo.model.User;
 
 import java.util.List;
 
 public interface UserService {
-    void creatUser(User users);
-
-    void updatUser(User users);
-
-    List<User> getAllUsers();
-
-    User getUserId(Long id);
-
-    void delUser(Long id);
+    void addUser(User user);
+    User findUserById(Long id);
+    void deleteUserById(Long id);
+    void updateUserInfo(User user);
+    List<User> listAllUsers();
 }
